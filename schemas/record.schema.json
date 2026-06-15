@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "CarbonRecord (off-chain record.json) — Enigma-Datacenter-Carbon-Emission-Audit-Tracker",
+  "type": "object",
+  "required": ["facilityId", "reportingPeriod", "scope", "co2eTonnes", "evidenceCid", "owner"],
+  "properties": {
+    "facilityId":      { "type": "string", "description": "data-center id; combined with period = natural key" },
+    "reportingPeriod": { "type": "string", "description": "e.g. 2026-Q1" },
+    "scope":           { "type": "integer", "enum": [1, 2, 3], "description": "GHG Protocol scope" },
+    "co2eTonnes":      { "type": "number", "description": "audited tonnes CO2e for the period" },
+    "methodology":     { "type": "string", "description": "e.g. GHG Protocol, ISO 14064" },
+    "evidenceCid":     { "type": "string", "description": "IPFS CID of the audit evidence pack" },
+    "owner":           { "type": "string", "pattern": "^0x[0-9a-fA-F]{40}$" },
+    "auditedAt":       { "type": "string", "format": "date" }
+  }
+}
